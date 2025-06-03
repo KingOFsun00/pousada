@@ -1,0 +1,436 @@
+/* Estilos Gerais  */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.main-header {
+     background:rgb(75, 62, 5); /*  tom azul escuro */
+    color: #FFD700;
+    padding: 1rem 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.main-header .logo img {
+    height: 60px; /* Ajuste logotipo*/
+    border-radius: 50%; /* logo circular */
+}
+
+.main-header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-header nav ul li {
+    margin-left: 20px;
+}
+
+.main-header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.main-header nav ul li a:hover {
+    color: #e74c3c; /* tom de vermelho/laranja para hover */
+}
+
+/* Estilos específicos da página de Contato */
+.contact-content {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contact-info h1, .pousada-images h2 {
+    text-align: center;
+     color: #FFD700;
+    margin-bottom: 25px;
+}
+
+.contact-info p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.contact-links {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.contact-links h2 {
+    text-align: center;
+     color: #FFD700;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap; /*  quebra linha em telas menores */
+    justify-content: center;
+    gap: 20px; /* Espaço entre os botões */
+    margin-bottom: 30px;
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    background-color: #eee;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 200px; /* Garante que os botões não fiquem muito pequenos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.social-button img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.social-button:hover {
+    transform: translateY(-3px);
+}
+
+/* Cores específicas para os botões */
+.social-button.whatsapp { background-color: #25D366; color: white; }
+.social-button.whatsapp:hover { background-color: #1DA851; }
+
+.social-button.instagram { background-color: #E1306C; color: white; }
+.social-button.instagram:hover { background-color: #B32556; }
+
+.social-button.booking { background-color: #003580; color: white; }
+.social-button.booking:hover { background-color: #002A66; }
+
+.contact-detail {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.contact-detail p {
+    margin: 8px 0;
+}
+
+.pousada-images {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Layout responsivo de grid */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: 200px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.03);
+}
+
+.main-footer {
+    background-color: #060930;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 20px;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-header nav ul {
+        margin-top: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-header nav ul li {
+        margin: 5px 0;
+    }
+
+    .social-buttons {
+        flex-direction: column; /* Botões um abaixo do outro em telas pequenas */
+        align-items: center;
+    }
+
+    .social-button {
+        width: 80%; /* Ocupa mais largura em telas pequenas */
+        max-width: 300px; /* Limita a largura máxima */
+    }
+
+    .image-gallery {
+        grid-template-columns: 1fr; /* coluna em telas muito pequenas */
+    }
+}
+/* Estilos Específicos da Página de Reserva */
+.reserve-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.reserve-form-section h1 {
+    text-align: center;
+     color: #FFD700;
+    margin-bottom: 15px;
+}
+
+.reserve-form-section p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.reserve-form .form-group {
+    margin-bottom: 18px;
+}
+
+.reserve-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.reserve-form input[type="text"],
+.reserve-form input[type="email"],
+.reserve-form input[type="tel"],
+.reserve-form input[type="date"],
+.reserve-form input[type="number"],
+.reserve-form select,
+.reserve-form textarea {
+    width: calc(100% - 20px); /* Ajusta para padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+}
+
+.reserve-form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.reserve-form select {
+    appearance: none; /* Remove estilo padrão do sistema operacional */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Seta personalizada */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    cursor: pointer;
+}
+
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745; /* Verde para botão de sucesso/reserva */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+.reserve-highlights {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.reserve-highlights h2 {
+    text-align: center;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.reserve-highlights ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.reserve-highlights ul li {
+    background-color: #e6f7ff; /* Azul claro para destacar itens */
+    margin: 10px auto;
+    padding: 10px 15px;
+    border-left: 5px solid #007bff;
+    border-radius: 5px;
+    font-size: 1.05em;
+    color: #333;
+    max-width: 500px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Responsividade Básica para formulário */
+@media (max-width: 600px) {
+    .reserve-form input[type="text"],
+    .reserve-form input[type="email"],
+    .reserve-form input[type="tel"],
+    .reserve-form input[type="date"],
+    .reserve-form input[type="number"],
+    .reserve-form select,
+    .reserve-form textarea {
+        width: calc(100% - 20px); /* Garante largura total em telas menores */
+    }
+}
+
+/* Remova ou ajuste os estilos anteriores de .room-gallery e .room-card se existirem */
+/* .room-gallery { ... } */
+/* .room-card { ... } */
+
+/* Novos Estilos Específicos para Seções de Detalhes dos Quartos */
+.room-details-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 30px;
+    margin-bottom: 40px; /* Espaço entre as seções de quartos */
+    text-align: center;
+}
+
+.room-details-section h2 {
+      color: #FFD700;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.room-details-section p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.room-details-section ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    display: flex; /* Para alinhar itens em linha */
+    flex-wrap: wrap; /* Para quebrar linha se necessário */
+    justify-content: center; /* Centraliza os itens da lista */
+    gap: 15px; /* Espaçamento entre os itens */
+}
+
+.room-details-section ul li {
+    background-color: #e6f7ff; /* Fundo suave para os benefícios */
+    color: #0056b3;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.95em;
+    font-weight: bold;
+    border: 1px solid #b3e0ff;
+    flex-grow: 0; /* Não permite que os itens cresçam para preencher espaço */
+    flex-shrink: 0; /* Não permite que os itens diminuam */
+}
+
+.room-image-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 imagens por linha em telas maiores */
+    gap: 15px; /* Espaço entre as imagens */
+    margin: 30px 0;
+    overflow-x: auto; /* Permite rolagem horizontal se muitas imagens */
+    -webkit-overflow-scrolling: touch; /* Suaviza rolagem em iOS */
+    scroll-snap-type: x mandatory; /* Para rolagem com "snap" */
+}
+
+.room-image-carousel img {
+    width: 100%;
+    height: 220px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    scroll-snap-align: start; /* Para o efeito de "snap" na rolagem */
+}
+
+/* Ajustes para o botão de reserva dentro da seção de detalhes */
+.room-details-section .button {
+    display: inline-block; /* Volta a ser inline-block para alinhar com texto */
+    width: auto;
+    margin-top: 20px;
+    background-color: #28a745; /* Verde para reservar */
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.room-details-section .button:hover {
+    background-color: #218838;
+}
+
+/* Responsividade adicional */
+@media (max-width: 768px) {
+    .room-image-carousel {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Mais imagens por linha em telas menores */
+    }
+}
+
+@media (max-width: 600px) {
+    .room-details-section {
+        padding: 20px;
+    }
+    .room-details-section ul {
+        flex-direction: column; /* Itens da lista em coluna em telas pequenas */
+        align-items: center;
+    }
+    .room-image-carousel {
+        grid-template-columns: 1fr; /* Uma imagem por linha em telas muito pequenas */
+    }
+}

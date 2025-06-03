@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pousada Bistrô Savacipo</title>
+    <link rel="stylesheet" href="pousada.css">
+    <style>
+        /* Estilos para o container das imagens */
+        #imagens-links {
+            display: none; /* Oculta as imagens/links inicialmente */
+            margin-top: 20px; /* Mais espaço para separar do texto clicável */
+            text-align: center; /* Centraliza as imagens dentro do div */
+        }
+        #imagens-links a {
+            display: inline-block; /* Permite que os links das imagens fiquem lado a lado */
+            margin: 0 10px 10px 0; /* Espaçamento entre as imagens */
+            vertical-align: top; /* Alinha imagens no topo */
+        }
+        #imagens-links img {
+            width: 250px; /* Ajuste o tamanho padrão da imagem (pode ser mais ou menos) */
+            height: 150px; /* Altura fixa para uniformidade */
+            object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+            border: 1px solid #ccc;
+            border-radius: 8px; /* Bordas arredondadas para as imagens */
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2); /* Sombra para destacar */
+            transition: transform 0.3s ease; /* Transição suave no hover */
+        }
+        #imagens-links img:hover {
+            transform: scale(1.05); /* Pequeno zoom ao passar o mouse */
+        }
+
+        /* Estilo para o link clicável de texto */
+        .link-clicavel {
+            color: #007bff; /* Cor azul para link, mais convencional */
+            cursor: pointer;
+            text-decoration: underline; /* Indica que é clicável */
+            font-weight: bold;
+            display: block; /* Para garantir que o link ocupe sua própria linha */
+            margin-bottom: 15px; /* Espaço abaixo do link */
+        }
+        .link-clicavel:hover {
+            color: #0056b3; /* Cor mais escura no hover */
+        }
+
+        /* Estilos para a descrição "Sobre Nós" */
+        #descricao {
+            display: none; /* Oculta a descrição inicialmente */
+            margin-top: 15px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Estilos para o título "Sobre Nós" */
+        h2.clicavel {
+            cursor: pointer;
+            color: #34495e; /* Uma cor mais escura e profissional */
+            margin-bottom: 10px;
+            border-bottom: 2px solid #eee; /* Linha sutil abaixo do título */
+            padding-bottom: 5px;
+        }
+        h2.clicavel:hover {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bistrô Pousada Savacipo</h1>
+        <nav>
+            <ul>
+                <li><a href="pousada.html">Página Inicial</a></li> <li><a href="quartos.html">Quartos</a></li>
+                <li><a href="reserva.html">Reservar</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="sobre-nos-section"> <h2 class="clicavel" onclick="toggleDescricao()">Sobre Nós</h2>
+            <p class="link-clicavel" onclick="toggleImagens()">Clique aqui para ver fotos da região</p> 
+            <div id="imagens-links">
+                <a href="https://portalserradocipo.com.br/wp-content/uploads/2021/01/cachoeira-do-tombador-768x432.jpg" target="_blank">
+                    <img src="https://portalserradocipo.com.br/wp-content/uploads/2021/01/cachoeira-do-tombador-768x432.jpg" alt="Cachoeira do Tombador">
+                </a>
+                <a href="https://portalserradocipo.com.br/wp-content/uploads/2021/02/cachoeira-de-congonhas-960x480.jpg" target="_blank">
+                    <img src="https://portalserradocipo.com.br/wp-content/uploads/2021/02/cachoeira-de-congonhas-960x480.jpg" alt="Cachoeira de Congonhas">
+                </a>
+            </div>
+            
+            <div id="descricao">
+                <p>Seja bem-vindo à nossa pousada, um lugar perfeito para relaxar e aproveitar a natureza. Oferecemos quartos confortáveis, ótimas comodidades e um atendimento excepcional. Venha desfrutar de momentos inesquecíveis!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contato: <a href="mailto:walmircosta@yahoo.com">walmircosta@yahoo.com</a></p>
+    </footer>
+
+    <script>
+        function toggleDescricao() {
+            var descricaoDiv = document.getElementById('descricao');
+            if (descricaoDiv.style.display === 'none' || descricaoDiv.style.display === '') {
+                descricaoDiv.style.display = 'block'; // Mostra o elemento
+            } else {
+                descricaoDiv.style.display = 'none'; // Oculta o elemento
+            }
+        }
+
+        function toggleImagens() {
+            var imagensDiv = document.getElementById('imagens-links');
+            if (imagensDiv.style.display === 'none' || imagensDiv.style.display === '') {
+                imagensDiv.style.display = 'block'; // Mostra o elemento
+            } else {
+                imagensDiv.style.display = 'none'; // Oculta o elemento
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Georgia', serif; /* Fonte mais clássica para bistrô/pousada */
+    margin: 0;
+    padding: 0;
+    background-color: #F8F4E3; /* Um bege claro/creme para o fundo, mais acolhedor */
+    color: #333333; /* Texto principal em cinza escuro */
+    line-height: 1.6;
+}
+
+header {
+    background:rgb(75, 62, 5); /* Marrom escuro para o cabeçalho (cor de café/terra) */
+    color: #FFD700; /* Dourado para o texto do cabeçalho */
+    padding: 25px 0;
+    text-align: center;
+    border-bottom: 3px solid #36281D; /* Borda inferior marrom mais escuro */
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.8em; /* Aumenta o título principal */
+    letter-spacing: 2px; /* Espaçamento entre letras */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+nav ul li {
+    display: inline-block; /* Melhor para espaçamento e alinhamento */
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #FFD700; /* Links dourados */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease; /* Efeito de transição */
+}
+
+nav ul li a:hover {
+    color: #FFFFFF; /* Branco ao passar o mouse */
+}
+
+main {
+    padding: 30px 5%; /* Espaçamento nas laterais */
+    max-width: 1200px; /* Limita a largura do conteúdo */
+    margin: 20px auto; /* Centraliza o conteúdo */
+    background-color: #FFFFFF; /* Fundo branco para a área principal */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para a caixa principal */
+}
+
+section {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #cccccc; /* Linha divisória suave */
+}
+
+section:last-child {
+    border-bottom: none; /* Remove a borda da última seção */
+}
+
+h2 {
+    font-family: 'Palatino Linotype', 'Book Antiqua', serif; /* Outra fonte clássica para subtítulos */
+    color: #4A2C2C; /* Marrom avermelhado escuro */
+    font-size: 2em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #D2B48C; /* Linha decorativa abaixo do título */
+    padding-bottom: 5px;
+}
+
+/* ESTILOS PARA DESTACAR A DESCRIÇÃO */
+#descricao {
+    display: none; /* Oculta a descrição inicialmente, conforme seu HTML */
+    margin-top: 25px; /* Mais espaço acima */
+    padding: 25px; /* Mais preenchimento interno */
+    border: 2px solid #8B4513; /* Borda mais grossa em tom de madeira/terra */
+    background-color: #FDF9F0; /* Um off-white muito claro */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
+    font-size: 1.1em; /* Fonte um pouco maior */
+    color: #36281D; /* Cor de texto mais escuro */
+}
+
+#descricao p {
+    margin: 0; /* Remove margem padrão de parágrafos */
+}
+
+/* ESTILOS PARA AS IMAGENS EM UMA BORDA */
+#imagens-links {
+    display: none; /* Oculta as imagens/links inicialmente, conforme seu HTML */
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #D2B48C; /* Borda em tom de madeira */
+    background-color: #FDF9F0; /* Fundo claro para a área das imagens */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Sombra suave */
+
+    display: flex; /* Permite que as imagens fiquem lado a lado */
+    flex-wrap: wrap; /* Quebra para a próxima linha se não houver espaço */
+    gap: 15px; /* Espaçamento entre as imagens */
+    justify-content: center; /* Centraliza as imagens na linha */
+}
+
+#imagens-links a {
+    flex: 0 0 calc(25% - 15px); /* Quatro imagens por linha (100% / 4 = 25% menos o gap) */
+    max-width: calc(25% - 15px); /* Garante que não exceda o limite */
+    text-decoration: none;
+    border: 2px solid transparent; /* Borda transparente inicial */
+    transition: border 0.3s ease;
+}
+
+#imagens-links a:hover {
+    border: 2px solid #8B4513; /* Borda realçada ao passar o mouse */
+}
+
+#imagens-links img {
+    width: 100%; /* Imagem preenche o espaço do link */
+    height: 150px; /* Altura fixa para as miniaturas */
+    object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+    border-radius: 5px; /* Cantos arredondados para as imagens */
+    display: block; /* Remove espaço extra abaixo da imagem */
+}
+
+/* Ajuste para telas menores - para ter menos imagens por linha */
+@media (max-width: 992px) {
+    #imagens-links a {
+        flex: 0 0 calc(33.33% - 15px); /* 3 imagens por linha */
+        max-width: calc(33.33% - 15px);
+    }
+}
+
+@media (max-width: 768px) {
+    #imagens-links a {
+        flex: 0 0 calc(50% - 15px); /* 2 imagens por linha */
+        max-width: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 480px) {
+    #imagens-links a {
+        flex: 0 0 calc(100% - 15px); /* 1 imagem por linha */
+        max-width: calc(100% - 15px);
+    }
+}
+
+
+/* Estilos do Formulário */
+form {
+    background: #FDF9F0; /* Fundo claro para o formulário */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #D2B48C; /* Borda suave */
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #4A2C2C;
+}
+
+input[type="date"],
+input[type="submit"] {
+    width: calc(100% - 22px); /* Ajusta a largura total */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #D2B48C;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+input[type="submit"] {
+    background: #8B4513; /* Marrom para o botão de submit */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    width: 100%; /* Ocupa toda a largura disponível */
+}
+
+input[type="submit"]:hover {
+    background: #A0522D; /* Marrom mais claro ao passar o mouse */
+}
+
+/* Estilos para os links clicáveis (botões de mostrar/ocultar) */
+.link-clicavel, h2.clicavel {
+    cursor: pointer;
+    color: #006699; /* Um azul mais suave e elegante */
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.link-clicavel:hover, h2.clicavel:hover {
+    color: #004466; /* Azul mais escuro ao passar o mouse */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #5C4033; /* Marrom escuro */
+    color: #FFD700; /* Dourado */
+    margin-top: 40px;
+    border-top: 3px solid #36281D;
+}
+
+footer a {
+    color: #FFFFFF; /* Branco para o link do email no footer */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
