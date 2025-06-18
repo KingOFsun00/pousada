@@ -1,72 +1,946 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - Pousada [Nome da Pousada]</title>
-    <link rel="stylesheet" href="../pousada/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Entre em contato com a Pousada Bistrô Savacipo - Serra do Cipó">
+    <meta name="keywords" content="contato pousada, serra do cipó, reservas, telefone pousada, whatsapp pousada">
+    <title>Contato | Pousada Bistrô Savacipo - Serra do Cipó</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #5d4037;
+            --secondary-color: #8d6e63;
+            --accent-color: #d7ccc8;
+            --light-color: #efebe9;
+            --dark-color: #3e2723;
+            --text-color: #333;
+            --text-light: #f5f5f5;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        /* Header Estilizado */
+        header {
+            background: linear-gradient(rgba(61, 39, 35, 0.9), rgba(61, 39, 35, 0.9)), 
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--text-light);
+            padding: 6rem 0 3rem;
+            position: relative;
+            text-align: center;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Navegação Premium */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(93, 64, 55, 0.95);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background-color: rgba(61, 39, 35, 0.98);
+            padding: 0.5rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+            position: relative;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: var(--accent-color);
+        }
+
+        .nav-cta {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--light-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Seção de Contato */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .contact-methods {
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-icon {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p, .contact-details a {
+            color: #666;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Formulário de Contato */
+        .contact-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(141, 110, 99, 0.2);
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Galeria de Imagens */
+        .image-gallery {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Mapa */
+        .map-container {
+            margin-top: 4rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-column p, .footer-column a {
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--text-light);
+        }
+
+        .footer-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .footer-social-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Botão de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Botão de Voltar ao Topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-5px);
+        }
+
+        /* Tema escuro/claro */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        body.dark-theme {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme .contact-info,
+        body.dark-theme .contact-form {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme .contact-details p,
+        body.dark-theme .contact-details a,
+        body.dark-theme .contact-info p {
+            color: #ccc;
+        }
+
+        body.dark-theme .form-group input,
+        body.dark-theme .form-group textarea,
+        body.dark-theme .form-group select {
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+            border-color: #444;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .nav-cta {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+            
+            header {
+                padding-top: 8rem;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="main-header">
-        <div class="logo">
-            <img src="paginas/imagens/logo-pousada.jpg" alt="Bistro Pousada Savacipo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="../pousada/index.html">Página Inicial</a></li>
-                <li><a href="../pousada/contato.html">Contato</a></li>
-                 <li><a href="../pousada/quartos.html">Quartos</a></li>
-                  <li><a href="reserva.html">Reservar</a></li>
-                </ul>
-        </nav>
+    <!-- Botão de Tema -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Navegação -->
+    <nav id="mainNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quartos.html">Quartos</a></li>
+            <li><a href="reserva.html">Reservas</a></li>
+            <li><a href="contato.html" class="active">Contato</a></li>
+            <li><a href="reserva.html" class="nav-cta">Reservar Agora</a></li>
+        </ul>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1 class="header-title">Fale Conosco</h1>
+        <p class="header-subtitle">Estamos à disposição para tornar sua experiência na Pousada Bistrô Savacipo inesquecível. Entre em contato por qualquer um dos canais abaixo.</p>
     </header>
 
-    <main class="contact-content">
-        <section class="contact-info">
-            <h1>Entre em Contato Conosco</h1>
-            <p>Estamos ansiosos para recebê-lo em nossa pousada! Utilize os contatos abaixo para reservas ou dúvidas.</p>
-
-            <div class="contact-links">
-                <h2>Canais de Contato e Redes Sociais</h2>
-                <div class="social-buttons">
-                    <a href="https://wa.me/5531988880727" target="_blank" class="social-button whatsapp">
-                        <img src="paginas/imagens/whatsapp-logo.png" alt="WhatsApp">
-                        <span>Fale Conosco no WhatsApp</span>
-                    </a>
-
-                    <a href="https://www.instagram.com/bistro_pousada_savacipo/" target="_blank" class="social-button instagram">
-                        <img src="paginas/imagens/instagram-logo.png" alt="Instagram">
-                        <span>Nos Siga no Instagram</span>
-                    </a>
-
-                    <a href="https://www.booking.com/hotel/br/bistro-savacipo.pt-br.html?aid=360920&label=New_Portuguese_PT_ROW_6409090206-_9oPl604g33uUPimd0_L7QS217921514283%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg&sid=720f5c356123fab0fa9f3e5a9308bdf4&dest_id=900051831&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1748688802&srpvid=2b224c889b630140&type=total&ucfs=1&" target="_blank" class="social-button booking">
-                        <img src="paginas/imagens/booking-logo.png" alt="Booking.com">
-                        <span>Reserve pelo Booking.com</span>
-                    </a>
-
-                    <div class="contact-detail">
-                        <p><strong>Telefone:</strong> (31) 98888-0727</p>
-                        <p><strong>E-mail:</strong> contato@suapousada.com.br</p>
-                        <p><strong>Endereço:</strong>  final da reta do cemitério - Av. Lapinha João Congo - Serra do Cipó, Jaboticatubas Mg</p>
+    <!-- Conteúdo Principal -->
+    <main>
+        <div class="contact-container">
+            <!-- Informações de Contato -->
+            <section class="contact-info">
+                <h1>Como Podemos Ajudar?</h1>
+                <p>Temos várias formas de contato para sua comodidade. Respondemos rapidamente a todas as mensagens e ligações.</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Telefone</h3>
+                            <a href="tel:+5531988880727">(31) 98888-0727</a>
+                            <p>Atendimento 24 horas</p>
+                        </div>
                     </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>E-mail</h3>
+                            <a href="mailto:contato@pousadasavacipo.com.br">contato@pousadasavacipo.com.br</a>
+                            <p>Respostas em até 24h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>WhatsApp</h3>
+                            <a href="https://wa.me/5531988880727" target="_blank">(31) 98888-0727</a>
+                            <p>Reservas e informações</p>
+                            <div class="social-links">
+                                <a href="https://wa.me/5531988880727" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Endereço</h3>
+                            <p>Final da reta do cemitério - Av. Lapinha João Congo</p>
+                            <p>Serra do Cipó, Jaboticatubas - MG</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-hashtag"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Redes Sociais</h3>
+                            <p>Siga-nos para novidades e promoções</p>
+                            <div class="social-links">
+                                <a href="https://www.instagram.com/bistro_pousada_savacipo/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.tripadvisor.com.br/" target="_blank" title="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Formulário de Contato -->
+            <section class="contact-form">
+                <h2>Envie uma Mensagem</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome Completo *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Assunto *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>Selecione um assunto</option>
+                            <option value="reserva">Reserva/Disponibilidade</option>
+                            <option value="duvida">Dúvida sobre acomodações</option>
+                            <option value="evento">Eventos/Grupos</option>
+                            <option value="outro">Outro assunto</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                    </button>
+                </form>
+            </section>
+        </div>
+        
+        <!-- Galeria de Imagens -->
+        <section>
+            <h2 style="text-align: center; margin-top: 4rem; font-family: 'Playfair Display', serif; color: var(--primary-color);">Conheça Nossos Espaços</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="paginas/imagens/paisagem.jpeg" alt="Vista da Pousada">
+                    <div class="gallery-caption">Vista Panorâmica</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="paginas/imagens/luxo_img2.jpeg" alt="Quarto da Pousada">
+                    <div class="gallery-caption">Chalé Premium</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="paginas/imagens/gastronomico.jpg" alt="Área de Alimentação">
+                    <div class="gallery-caption">Bistrô Gastronômico</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="paginas/imagens/pousada-area-comum.jpg" alt="Área de Lazer">
+                    <div class="gallery-caption">Área de Lazer</div>
                 </div>
             </div>
         </section>
-
-        <section class="pousada-images">
-            <h2>Nossa Pousada em Imagens</h2>
-            <div class="image-gallery">
-                <img src="paginas/imagens/pousada-vista1.jpg" alt="Vista da Pousada">
-                <img src="paginas/imagens/pousada-quarto.jpeg" alt="Quarto da Pousada">
-                <img src="paginas/imagens/pousada-piscina.jpg" alt="Piscina da Pousada">
-                <img src="paginas/imagens/pousada-area-comum.jpg" alt="Área comum da Pousada">
-                </div>
+        
+        <!-- Mapa -->
+        <section>
+            <h2 style="text-align: center; margin-top: 4rem; font-family: 'Playfair Display', serif; color: var(--primary-color);">Nossa Localização</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.715832919206!2d-43.88682292433954!3d-19.94035003817905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699c6e1a8a9f1%3A0x8a0b9a9d1a2b1c1d!2sSerra%20do%20Cip%C3%B3%2C%20Jaboticatubas%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1681234567890!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </section>
     </main>
-
-    <footer class="main-footer">
-        <p>&copy; 2024 Pousada Bistro Pousada Savacipo. Todos os direitos reservados.</p>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Pousada Bistrô Savacipo</h3>
+                <p>Um refúgio de tranquilidade na Serra do Cipó, onde a natureza encontra o conforto moderno.</p>
+                <div class="footer-social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <a href="index.html">Home</a>
+                <a href="quartos.html">Nossos Quartos</a>
+                <a href="reserva.html">Faça sua Reserva</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Serra do Cipó, MG</p>
+                <p><i class="fas fa-phone"></i> (31) 98888-0727</p>
+                <p><i class="fas fa-envelope"></i> contato@pousadasavacipo.com.br</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Horários</h3>
+                <p><strong>Recepção:</strong> 24 horas</p>
+                <p><strong>Bistrô:</strong> 7h às 22h</p>
+                <p><strong>Spa:</strong> 9h às 20h (com agendamento)</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Pousada Bistrô Savacipo. Todos os direitos reservados.</p>
+        </div>
     </footer>
+
+    <!-- Botão de WhatsApp -->
+    <a href="https://wa.me/5531988880727" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Botão de Voltar ao Topo -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Validação do formulário
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validação simples
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !subject || !message) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            // Simulação de envio
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            this.reset();
+        });
+
+        // Botão voltar ao topo
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Tema claro/escuro
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('dark-theme')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Máscara para telefone
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 2) {
+                value = `(${value.substring(0, 2)}) ${value.substring(2)}`;
+            }
+            
+            if (value.length > 10) {
+                value = `${value.substring(0, 10)}-${value.substring(10, 14)}`;
+            }
+            
+            e.target.value = value;
+        });
+    </script>
 </body>
 </html>

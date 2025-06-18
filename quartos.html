@@ -1,87 +1,962 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossos Quartos - Pousada Bistro Pousada Savacipo</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Conheça nossos quartos na Pousada Bistrô Savacipo - Serra do Cipó">
+    <meta name="keywords" content="quartos pousada, chalé serra do cipó, suíte premium, hospedagem">
+    <title>Nossos Quartos | Pousada Bistrô Savacipo - Serra do Cipó</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        :root {
+            --primary-color: #5d4037;
+            --secondary-color: #8d6e63;
+            --accent-color: #d7ccc8;
+            --light-color: #efebe9;
+            --dark-color: #3e2723;
+            --text-color: #333;
+            --text-light: #f5f5f5;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+
+        /* Header Estilizado */
+        header {
+            background: linear-gradient(rgba(61, 39, 35, 0.9), rgba(61, 39, 35, 0.9)), 
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--text-light);
+            padding: 6rem 0 3rem;
+            position: relative;
+            text-align: center;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Navegação Premium */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(93, 64, 55, 0.95);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background-color: rgba(61, 39, 35, 0.98);
+            padding: 0.5rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+            position: relative;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: var(--accent-color);
+        }
+
+        .nav-cta {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--light-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Introdução */
+        .rooms-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .rooms-intro h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .rooms-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Seção de Quartos */
+        .room-section {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 4rem;
+            transition: var(--transition);
+        }
+
+        .room-section:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .room-header {
+            padding: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .room-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .room-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .room-gallery {
+            position: relative;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 400px;
+        }
+
+        .swiper-slide {
+            overflow: hidden;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background-color: var(--primary-color);
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: var(--primary-color);
+        }
+
+        .room-details {
+            padding: 2rem;
+        }
+
+        .room-details h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .amenities-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .amenities-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .amenities-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .price-info {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .price-info .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-info .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .price-info .disclaimer {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .reserve-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+        }
+
+        .reserve-button:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Comparação de Quartos */
+        .comparison-section {
+            margin-top: 4rem;
+        }
+
+        .comparison-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: var(--light-color);
+        }
+
+        .comparison-table .feature {
+            font-weight: 500;
+        }
+
+        .comparison-table .yes {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .comparison-table .no {
+            color: #F44336;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-column p, .footer-column a {
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--text-light);
+        }
+
+        .footer-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .footer-social-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Botão de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Botão de Voltar ao Topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-5px);
+        }
+
+        /* Tema escuro/claro */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        body.dark-theme {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme .room-section,
+        body.dark-theme .comparison-table {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme .room-details,
+        body.dark-theme .price-info {
+            background-color: #2d2d2d;
+        }
+
+        body.dark-theme .comparison-table th {
+            background-color: var(--dark-color);
+        }
+
+        body.dark-theme .comparison-table tr:nth-child(even) {
+            background-color: #2d2d2d;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .room-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-title {
+                font-size: 2.5rem;
+            }
+            
+            .swiper {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .nav-cta {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+            
+            header {
+                padding-top: 8rem;
+            }
+            
+            .room-header {
+                padding: 1.5rem;
+            }
+            
+            .room-details {
+                padding: 1.5rem;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+            
+            .room-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .swiper {
+                height: 250px;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="main-header">
-        <div class="logo">
-            <img src="paginas/imagens/logo-pousada.jpg" alt="Logotipo da Pousada Bistro Pousada Savacipo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Página Inicial</a></li>
-                <li><a href="quartos.html">Quartos</a></li>
-                <li><a href="reserva.html">Reservar</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-        </nav>
+    <!-- Botão de Tema -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Navegação -->
+    <nav id="mainNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quartos.html" class="active">Quartos</a></li>
+            <li><a href="reserva.html">Reservas</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="reserva.html" class="nav-cta">Reservar Agora</a></li>
+        </ul>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1 class="header-title">Nossos Quartos e Chalés</h1>
+        <p class="header-subtitle">Cada espaço foi cuidadosamente projetado para oferecer conforto, privacidade e uma experiência única na Serra do Cipó</p>
     </header>
 
-    <main class="rooms-content">
+    <!-- Conteúdo Principal -->
+    <main>
+        <!-- Introdução -->
         <section class="rooms-intro">
-            <h1>Conheça Nossos Quartos Aconchegantes</h1>
-            <p>Na Pousada Bistro Pousada Savacipo, cada detalhe foi pensado para o seu conforto e bem-estar. Escolha o quarto ideal para a sua estadia!</p>
+            <h1>Conheça Nossas Acomodações</h1>
+            <p>Na Pousada Bistrô Savacipo, cada detalhe foi pensado para o seu conforto e bem-estar. Escolha o quarto ideal para a sua estadia!</p>
         </section>
 
-        <section class="room-details-section">
-            <h2>Quarto Chalé da Mata</h2>
-            <p>Conforto e praticidade para sua estadia, com vista para o jardim e todas as comodidades essenciais.</p>
-            <ul>
-                <li>Chalé separado</li>
-                <li>Cama queen Size</li>
-                <li>Banheiro privado</li>
-                <li>Duas camas de solteiro</li>
-            </ul>
-            <div class="room-image-carousel">
-                <img src="paginas/imagens/standard_img1.jpeg" alt="Chalé Mata - Vista 1">
-                <img src="paginas/imagens/standard_img2.jpeg" alt="Chalé Mata - Detalhe Cama">
-                <img src="paginas/imagens/standard_img3.jpeg" alt="Chalé Mata - Banheiro">
+        <!-- Chalé da Mata -->
+        <section class="room-section">
+            <div class="room-header">
+                <h2>Chalé da Mata</h2>
+                <p>Conforto e privacidade em meio à natureza, com vista para a floresta nativa da Serra do Cipó</p>
+            </div>
+            
+            <div class="room-content">
+                <div class="room-gallery">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="paginas/imagens/standard_img1.jpeg" alt="Chalé da Mata - Vista Externa">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="paginas/imagens/standard_img2.jpeg" alt="Chalé da Mata - Quarto">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="paginas/imagens/standard_img3.jpeg" alt="Chalé da Mata - Banheiro">
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
                 </div>
-            <a href="reserva.html?chalé=mata" class="button">Reservar Chalé da mata</a>
-        </section>
-
-        <section class="room-details-section">
-            <h2>Chalé de adobe</h2>
-            <p>Espaço amplo e sofisticado, com decoração elegante e amenidades premium para uma experiência inesquecível.</p>
-            <ul>
-                <li>Duas camas Queen Size</li>
-                <li>Varanda privativa</li>
-                <li>vista espetacular da serra do cipo</li>
-                <li>Banheiro privativo </li>
-            </ul>
-            <div class="room-image-carousel">
-                <img src="paginas/imagens/luxo_img1.jpeg" alt="Chalé de Adobe - Vista Geral">
-                <img src="paginas/imagens/luxo_img2.jpeg" alt="Chalé de Adobe - Varanda">
-                <img src="paginas/imagens/luxo_img3.jpeg" alt="Chalé de Adobe - Área de Descanso">
+                
+                <div class="room-details">
+                    <h3>Detalhes do Chalé</h3>
+                    <ul class="amenities-list">
+                        <li>Chalé privativo com entrada independente</li>
+                        <li>Cama Queen Size com colchão premium</li>
+                        <li>Banheiro privativo com aquecimento solar</li>
+                        <li>Varanda com rede e vista para a mata</li>
+                        <li>Ar-condicionado e ventilador de teto</li>
+                        <li>Wi-Fi de alta velocidade</li>
+                        <li>Frigobar abastecido</li>
+                        <li>Café da manhã incluso</li>
+                    </ul>
+                    
+                    <div class="price-info">
+                        <div class="price">R$ 350 <span>/noite (casal)</span></div>
+                        <p class="disclaimer">*Valores para 2 pessoas. Taxas e impostos inclusos.</p>
+                    </div>
+                    
+                    <a href="reserva.html?quarto=chale-mata" class="reserve-button">Reservar Chalé da Mata</a>
                 </div>
-            <a href="reserva.html?chalé=adobe" class="button">Reservar Chalé de adobe</a>
+            </div>
         </section>
 
-        <section class="room-details-section">
-            <h2>Suíte Interna</h2>
-            <p>Ideal para quem busca conforto e privacidade. ideal para familias grandes que desejam laser e diversão</p>
-            <ul>
-                <li>Cama King Size</li>
-                <li>Banheiro compartilhado</li>
-                <li>duas camas de solteiro</li>
-                <li>Serviço de quarto 24h</li>
-            </ul>
-            <div class="room-image-carousel">
-                <img src="paginas/imagens/suite_img1.jpeg" alt="Suíte Interna - Sala de Estar">
-                <img src="paginas/imagens/suite_img2.jpeg" alt="Suíte Interna - Quarto">
-                <img src="paginas/imagens/suite_img3.jpeg" alt="Suíte Interna - Vista da Janela">
+        <!-- Chalé de Adobe -->
+        <section class="room-section">
+            <div class="room-header">
+                <h2>Chalé de Adobe</h2>
+                <p>Conforto rústico com toques modernos e vista espetacular da Serra do Cipó</p>
+            </div>
+            
+            <div class="room-content">
+                <div class="room-gallery">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="paginas/imagens/luxo_img1.jpeg" alt="Chalé de Adobe - Vista Externa">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="paginas/imagens/luxo_img2.jpeg" alt="Chalé de Adobe - Quarto">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="paginas/imagens/luxo_img3.jpeg" alt="Chalé de Adobe - Varanda">
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
                 </div>
-            <a href="reserva.html?quarto=suite" class="button">Reservar Suíte interna</a>
+                
+                <div class="room-details">
+                    <h3>Detalhes do Chalé</h3>
+                    <ul class="amenities-list">
+                        <li>Construção em adobe com isolamento térmico natural</li>
+                        <li>Duas camas Queen Size</li>
+                        <li>Varanda privativa com vista panorâmica</li>
+                        <li>Banheiro privativo com chuveiro aquecido</li>
+                        <li>Lareira para os dias mais frios</li>
+                        <li>TV de tela plana e Wi-Fi</li>
+                        <li>Frigobar e kit de café</li>
+                        <li>Café da manhã gourmet incluso</li>
+                    </ul>
+                    
+                    <div class="price-info">
+                        <div class="price">R$ 420 <span>/noite (até 4 pessoas)</span></div>
+                        <p class="disclaimer">*Valores para 2 pessoas. Adicional para terceira e quarta pessoa.</p>
+                    </div>
+                    
+                    <a href="reserva.html?quarto=chale-adobe" class="reserve-button">Reservar Chalé de Adobe</a>
+                </div>
+            </div>
         </section>
 
-        </main>
+        <!-- Suíte Interna -->
+        <section class="room-section">
+            <div class="room-header">
+                <h2>Suíte Interna</h2>
+                <p>Ideal para famílias ou grupos que buscam conforto e praticidade</p>
+            </div>
+            
+            <div class="room-content">
+                <div class="room-gallery">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=80" alt="Suíte Interna - Quarto">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Suíte Interna - Área de Estar">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Suíte Interna - Banheiro">
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                
+                <div class="room-details">
+                    <h3>Detalhes da Suíte</h3>
+                    <ul class="amenities-list">
+                        <li>Cama King Size e duas camas de solteiro</li>
+                        <li>Banheiro compartilhado com aquecimento</li>
+                        <li>Área de estar com sofá-cama</li>
+                        <li>Ar-condicionado e ventilador</li>
+                        <li>TV a cabo e Wi-Fi</li>
+                        <li>Frigobar e mesa de trabalho</li>
+                        <li>Serviço de quarto 24h</li>
+                        <li>Café da manhã buffet incluso</li>
+                    </ul>
+                    
+                    <div class="price-info">
+                        <div class="price">R$ 280 <span>/noite (até 2 pessoas)</span></div>
+                        <p class="disclaimer">*Valores para 2 pessoas. Adicional para terceira e quarta pessoa.</p>
+                    </div>
+                    
+                    <a href="reserva.html?quarto=suite-interna" class="reserve-button">Reservar Suíte Interna</a>
+                </div>
+            </div>
+        </section>
 
-    <footer class="main-footer">
-        <p>&copy; 2024 Pousada Bistro Pousada Savacipo. Todos os direitos reservados.</p>
+        <!-- Comparação de Quartos -->
+        <section class="comparison-section">
+            <h2>Comparação Entre Nossas Acomodações</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Chalé da Mata</th>
+                        <th>Chalé de Adobe</th>
+                        <th>Suíte Interna</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature">Capacidade</td>
+                        <td>2 pessoas</td>
+                        <td>4 pessoas</td>
+                        <td>4 pessoas</td>
+                    </tr>
+                    <tr>
+                        <td class="feature">Cama Queen/King</td>
+                        <td class="yes">Sim</td>
+                        <td class="yes">2 Queen</td>
+                        <td class="yes">1 King</td>
+                    </tr>
+                    <tr>
+                        <td class="feature">Banheiro Privativo</td>
+                        <td class="yes">Sim</td>
+                        <td class="yes">Sim</td>
+                        <td class="no">Compartilhado</td>
+                    </tr>
+                    <tr>
+                        <td class="feature">Varanda</td>
+                        <td class="yes">Sim</td>
+                        <td class="yes">Sim</td>
+                        <td class="no">Não</td>
+                    </tr>
+                    <tr>
+                        <td class="feature">Vista Panorâmica</td>
+                        <td class="yes">Mata</td>
+                        <td class="yes">Serra</td>
+                        <td class="no">Não</td>
+                    </tr>
+                    <tr>
+                        <td class="feature">Ar-condicionado</td>
+                        <td class="yes">Sim</td>
+                        <td class="yes">Sim</td>
+                        <td class="yes">Sim</td>
+                    </tr>
+                    <tr>
+                        <td class="feature">Wi-Fi</td>
+                        <td class="yes">Sim</td>
+                        <td class="yes">Sim</td>
+                        <td class="yes">Sim</td>
+                    </tr>
+                    <tr>
+                        <td class="feature">Café da Manhã</td>
+                        <td class="yes">Incluso</td>
+                        <td class="yes">Gourmet</td>
+                        <td class="yes">Buffet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Pousada Bistrô Savacipo</h3>
+                <p>Um refúgio de tranquilidade na Serra do Cipó, onde a natureza encontra o conforto moderno.</p>
+                <div class="footer-social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <a href="index.html">Home</a>
+                <a href="quartos.html">Nossos Quartos</a>
+                <a href="reserva.html">Faça sua Reserva</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Serra do Cipó, MG</p>
+                <p><i class="fas fa-phone"></i> (31) 98765-4321</p>
+                <p><i class="fas fa-envelope"></i> contato@pousadasavacipo.com.br</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Horários</h3>
+                <p><strong>Recepção:</strong> 24 horas</p>
+                <p><strong>Bistrô:</strong> 7h às 22h</p>
+                <p><strong>Spa:</strong> 9h às 20h (com agendamento)</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Pousada Bistrô Savacipo. Todos os direitos reservados.</p>
+        </div>
     </footer>
-</body>
-</html>
+
+    <!-- Botão de WhatsApp -->
+    <a href="https://wa.me/5531988880727" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Botão de Voltar ao Topo -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Inicializar Swiper para as galerias
+        document.addEventListener('DOM
