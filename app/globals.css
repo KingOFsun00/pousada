@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #5d4037;
+  --secondary-color: #8d6e63;
+  --accent-color: #d7ccc8;
+  --light-color: #efebe9;
+  --dark-color: #3e2723;
+  --text-color: #333;
+  --text-light: #f5f5f5;
+  --transition: all 0.3s ease;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] {
+  --light-color: #121212;
+  --text-color: #e0e0e0;
+}
+
+@layer base {
+  body {
+    background-color: var(--light-color);
+    color: var(--text-color);
+    transition: var(--transition);
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: var(--font-playfair);
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-amber-800 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-amber-900 hover:transform hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-amber-200 text-amber-900 px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-amber-100 hover:transform hover:-translate-y-1;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl;
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(rgba(61, 39, 35, 0.9), rgba(61, 39, 35, 0.9));
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark theme styles */
+[data-theme="dark"] .card {
+  @apply bg-gray-800 text-gray-100;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  @apply bg-gray-700 text-gray-100 border-gray-600;
+}
