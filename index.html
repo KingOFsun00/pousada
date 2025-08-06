@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pousada Bistrô Savacipo | Refúgio Premium na Serra do Cipó</title>
     <meta name="description" content="Pousada Bistrô Savacipo - Um refúgio de tranquilidade na Serra do Cipó com hospedagem premium e gastronomia requintada">
@@ -11,7 +12,8 @@
     <meta property="og:title" content="Pousada Bistrô Savacipo - Experiência Premium na Serra do Cipó">
     <meta property="og:description" content="Descubra nosso refúgio de tranquilidade com hospedagem premium e gastronomia requintada">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://seu-usuario.github.io/pousada-savacipo">
+    <meta property="og:url" content="https://seu-usuario.github.io/pousada">
+    <meta property="og:image" content="https://seu-usuario.github.io/pousada/og-image.jpg">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -613,6 +615,14 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // Fallback para navegadores mais antigos
+        if (!window.scrollTo) {
+            window.scrollTo = function(x, y) {
+                window.scrollX = x;
+                window.scrollY = y;
+            };
+        }
     </script>
 </body>
 </html>

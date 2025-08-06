@@ -1,126 +1,53 @@
 # 🏨 Pousada Bistrô Savacipo
 
-[![Deploy to GitHub Pages](https://github.com/seu-usuario/pousada-savacipo/actions/workflows/deploy.yml/badge.svg)](https://github.com/seu-usuario/pousada-savacipo/actions/workflows/deploy.yml)
-
 Site oficial da **Pousada Bistrô Savacipo**, localizada na Serra do Cipó, MG.
 
 ## 🌐 Site Online
 
-**Acesse:** [https://seu-usuario.github.io/pousada-savacipo](https://seu-usuario.github.io/pousada-savacipo)
-
-## 🚀 Tecnologias
-
-- **Next.js 14** - Framework React com App Router
-- **TypeScript** - Tipagem estática
-- **Tailwind CSS** - Framework CSS utilitário
-- **Lucide React** - Ícones modernos
-- **GitHub Pages** - Hospedagem gratuita
+**Acesse:** [https://seu-usuario.github.io/pousada](https://seu-usuario.github.io/pousada)
 
 ## 📱 Funcionalidades
 
 - ✅ Design responsivo e moderno
-- ✅ Tema claro/escuro
-- ✅ Sistema de autenticação
-- ✅ Formulários de contato e reserva
-- ✅ Galeria de imagens interativa
-- ✅ Dashboard do usuário
-- ✅ Cálculo automático de preços
-- ✅ Navegação suave e animações
+- ✅ Navegação suave entre seções
+- ✅ Galeria de quartos e acomodações
+- ✅ Informações de contato e localização
+- ✅ Botão direto para WhatsApp
+- ✅ Mapa integrado do Google Maps
 - ✅ SEO otimizado
 
-## 🛠️ Desenvolvimento Local
+## 🚀 Como usar no GitHub Pages
 
-1. **Clone o repositório:**
-\`\`\`bash
-git clone https://github.com/seu-usuario/pousada-savacipo.git
-cd pousada-savacipo
-\`\`\`
-
-2. **Instale as dependências:**
-\`\`\`bash
-npm install
-\`\`\`
-
-3. **Execute em desenvolvimento:**
-\`\`\`bash
-npm run dev
-\`\`\`
-
-4. **Acesse:** [http://localhost:3000](http://localhost:3000)
-
-## 🚀 Deploy no GitHub Pages
-
-### Configuração Automática (Recomendado)
-
-1. **Fork este repositório**
-2. **Vá em Settings > Pages**
-3. **Selecione "GitHub Actions" como source**
-4. **O deploy será automático a cada push na branch `main`**
-
-### Deploy Manual
-
-\`\`\`bash
-# Build e export
-npm run build
-
-# Deploy manual (se configurado gh-pages)
-npm run deploy
-\`\`\`
-
-## 📂 Estrutura do Projeto
-
-\`\`\`
-├── app/                     # App Router (Next.js 14)
-│   ├── page.tsx            # Página inicial
-│   ├── quartos/            # Página de quartos
-│   ├── reserva/            # Sistema de reservas
-│   ├── contato/            # Página de contato
-│   ├── login/              # Sistema de login
-│   ├── dashboard/          # Dashboard do usuário
-│   └── layout.tsx          # Layout principal
-├── components/             # Componentes React
-│   ├── navigation.tsx      # Navegação principal
-│   ├── footer.tsx         # Rodapé
-│   ├── hero.tsx           # Seção hero
-│   └── ...                # Outros componentes
-├── lib/                   # Utilitários
-│   ├── simple-auth.ts     # Sistema de autenticação
-│   └── github-pages.ts    # Helpers para GitHub Pages
-├── public/                # Arquivos estáticos
-│   ├── images/            # Imagens do site
-│   └── .nojekyll          # Configuração GitHub Pages
-└── .github/workflows/     # GitHub Actions
-    └── deploy.yml         # Workflow de deploy
-\`\`\`
-
-## 🔐 Sistema de Autenticação
-
-**Credenciais de teste:**
-
-**Cliente:**
-- E-mail: `cliente@email.com`
-- Senha: `123456`
-
-**Administrador:**
-- E-mail: `admin@pousadasavacipo.com.br`
-- Senha: `admin123`
+1. **Fork ou clone este repositório**
+2. **Vá em Settings > Pages no seu repositório**
+3. **Selecione "Deploy from a branch"**
+4. **Escolha branch `main` e pasta `/ (root)`**
+5. **Aguarde alguns minutos**
+6. **Acesse seu site em:** `https://seu-usuario.github.io/nome-do-repositorio`
 
 ## 🎨 Personalização
 
-### Cores do Tema
-\`\`\`css
-:root {
-  --primary-color: #5d4037;    /* Marrom escuro */
-  --secondary-color: #8d6e63;  /* Marrom médio */
-  --accent-color: #d7ccc8;     /* Bege claro */
-  --light-color: #efebe9;      /* Creme */
-  --dark-color: #3e2723;       /* Marrom muito escuro */
-}
+### Alterar informações de contato
+Edite o arquivo `index.html` e procure por:
+- Telefone: `(31) 98888-0727`
+- E-mail: `contato@pousadasavacipo.com.br`
+- WhatsApp: `https://wa.me/5531988880727`
+
+### Alterar imagens
+As imagens estão usando Unsplash como exemplo. Substitua as URLs pelas suas próprias imagens:
+\`\`\`html
+<img src="SUA_IMAGEM_AQUI.jpg" alt="Descrição">
 \`\`\`
 
-### Fontes
-- **Playfair Display** - Títulos e elementos decorativos
-- **Montserrat** - Texto corpo e navegação
+### Alterar cores
+Modifique as variáveis CSS no início do arquivo:
+\`\`\`css
+:root {
+    --primary-color: #5d4037;
+    --secondary-color: #8d6e63;
+    --accent-color: #d7ccc8;
+}
+\`\`\`
 
 ## 📞 Contato
 
@@ -136,3 +63,6 @@ Este projeto é propriedade da Pousada Bistrô Savacipo. Todos os direitos reser
 ---
 
 **Desenvolvido com ❤️ para a Pousada Bistrô Savacipo**
+\`\`\`
+
+Agora vamos criar um arquivo de configuração simples para o GitHub Pages:

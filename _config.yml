@@ -2,31 +2,13 @@
 title: "Pousada Bistrô Savacipo"
 description: "Um refúgio de tranquilidade na Serra do Cipó"
 url: "https://seu-usuario.github.io"
-baseurl: "/pousada-savacipo"
-
-# Build settings
-markdown: kramdown
-highlighter: rouge
-permalink: pretty
+baseurl: "/pousada"
 
 # Exclude from processing
 exclude:
-  - node_modules/
-  - .next/
-  - .git/
-  - .gitignore
   - README.md
-  - package.json
-  - package-lock.json
-  - next.config.js
-  - tailwind.config.js
-  - tsconfig.json
+  - .gitignore
 
 # Include files
 include:
   - .nojekyll
-
-# Plugins
-plugins:
-  - jekyll-sitemap
-  - jekyll-feed
