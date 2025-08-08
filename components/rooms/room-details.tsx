@@ -13,9 +13,9 @@ export function RoomDetails() {
       name: 'Chalé da Mata',
       description: 'Nosso Chalé da Mata é um refúgio íntimo cercado pela vegetação nativa da Serra do Cipó. Com arquitetura que harmoniza com o ambiente, oferece privacidade absoluta e todas as comodidades para uma estadia relaxante.',
       images: [
-        '/placeholder.svg?height=400&width=600',
-        '/placeholder.svg?height=400&width=600',
-        '/placeholder.svg?height=400&width=600'
+        '/chale-da-mata/standard_img1.jpeg',
+        '/chale-da-mata/standard_img2.jpeg',
+        '/chale-da-mata/standard_img3.jpeg'
       ],
       amenities: [
         'Chalé privativo',
@@ -35,9 +35,9 @@ export function RoomDetails() {
       name: 'Chalé de Adobe',
       description: 'Construído com técnicas tradicionais de adobe, nosso chalé oferece isolamento térmico natural combinado com um design contemporâneo. Perfeito para famílias que buscam conforto e contato com a natureza.',
       images: [
-        '/placeholder.svg?height=400&width=600',
-        '/placeholder.svg?height=400&width=600',
-        '/placeholder.svg?height=400&width=600'
+        '/chale-adobe/suite_img1.jpeg',
+        '/chale-adobe/suite_img2.jpeg',
+        '/chale-adobe/suite_img3.jpeg'
       ],
       amenities: [
         'Construção em adobe',
@@ -57,9 +57,9 @@ export function RoomDetails() {
       name: 'Suíte Interna',
       description: 'Nossa suíte interna oferece espaço amplo e funcional para grupos ou famílias. Com uma decoração aconchegante e todos os serviços da pousada à disposição, é a opção perfeita para quem valoriza praticidade.',
       images: [
-        '/placeholder.svg?height=400&width=600',
-        '/placeholder.svg?height=400&width=600',
-        '/placeholder.svg?height=400&width=600'
+        '/suite-interna/luxo_img1.jpeg',
+        '/suite-interna/luxo_img2.jpeg',
+        '/suite-interna/luxo_img3.jpeg'
       ],
       amenities: [
         'Cama King Size',
@@ -111,7 +111,7 @@ export function RoomDetails() {
                 {room.images.map((image, index) => (
                   <div key={index} className="relative h-64 rounded-lg overflow-hidden">
                     <Image
-                      src={image || "/placeholder.svg"}
+                      src={image}
                       alt={`${room.name} - Imagem ${index + 1}`}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-300"

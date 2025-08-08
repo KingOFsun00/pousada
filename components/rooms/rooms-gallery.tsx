@@ -11,21 +11,21 @@ export function RoomsGallery() {
       id: 'chale-mata',
       name: 'Chalé da Mata',
       description: 'Conforto e privacidade em meio à natureza',
-      image: '/rustic-cabin-deforestation.png',
+      image: '/chale-da-mata/standard_img1.jpeg',
       price: 'R$ 350/noite'
     },
     {
       id: 'chale-adobe',
       name: 'Chalé de Adobe',
       description: 'Conforto rústico com toques modernos',
-      image: '/placeholder.svg?height=300&width=400',
+      image: '/chale-adobe/suite_img1.jpeg',
       price: 'R$ 420/noite'
     },
     {
       id: 'suite-interna',
       name: 'Suíte Interna',
       description: 'Ideal para famílias ou grupos',
-      image: '/placeholder.svg?height=300&width=400',
+      image: '/suite-interna/luxo_img1.jpeg',
       price: 'R$ 280/noite'
     }
   ]
@@ -47,7 +47,7 @@ export function RoomsGallery() {
           <div key={room.id} className="card overflow-hidden group">
             <div className="relative h-64 overflow-hidden">
               <Image
-                src={room.image || "/placeholder.svg"}
+                src={room.image}
                 alt={room.name}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-110"

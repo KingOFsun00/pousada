@@ -69,8 +69,8 @@ function LoginContent() {
             </h1>
             <p className="text-gray-600">
               {isLogin ? 'Acesse sua conta' : 'Crie sua conta para fazer reservas'}
-            </p>
-          </div>
+          </p>
+        </div>
 
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-center">
@@ -87,15 +87,15 @@ function LoginContent() {
                 </label>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  <input
+                <input
                     type="text"
-                    id="name"
-                    value={formData.name}
+                  id="name"
+                  value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                    placeholder="Seu nome completo"
+                  placeholder="Seu nome completo"
                     required={!isLogin}
-                  />
+                />
                 </div>
               </div>
             )}
@@ -106,15 +106,15 @@ function LoginContent() {
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
+              <input
                   type="email"
-                  id="email"
-                  value={formData.email}
+                id="email"
+                value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                  placeholder="seu@email.com"
+                placeholder="seu@email.com"
                   required
-                />
+              />
               </div>
             </div>
 
@@ -150,15 +150,15 @@ function LoginContent() {
                 </label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  <input
+                <input
                     type={showPassword ? 'text' : 'password'}
-                    id="confirmPassword"
+                  id="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                     className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     placeholder="••••••••"
-                    required={!isLogin}
-                  />
+                  required={!isLogin}
+                />
                 </div>
               </div>
             )}
@@ -185,7 +185,7 @@ function LoginContent() {
             <Link href="/" className="text-gray-600 hover:text-gray-700">
               ← Voltar ao início
             </Link>
-          </div>
+            </div>
         </div>
       </div>
     </div>
