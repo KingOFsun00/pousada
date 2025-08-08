@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { CheckCircle, Calendar, Home } from 'lucide-react'
+import { CheckCircle, CreditCard, Home } from 'lucide-react'
 
-export default function ReservaSucessoPage() {
+function ReservaSucessoContent() {
   const searchParams = useSearchParams()
   const [paymentData, setPaymentData] = useState<any>(null)
 
@@ -35,20 +35,20 @@ export default function ReservaSucessoPage() {
           </h1>
           
           <p className="text-gray-600 mb-6">
-            Sua reserva foi confirmada com sucesso. Você receberá um e-mail de confirmação com todos os detalhes.
+            Sua reserva foi confirmada com sucesso! Você receberá um e-mail com os detalhes da sua estadia.
           </p>
 
           {paymentData && (
             <div className="bg-green-50 rounded-lg p-4 mb-6 text-left">
               <h3 className="font-semibold text-green-800 mb-2">Detalhes do Pagamento:</h3>
               <p className="text-sm text-green-700">ID: {paymentData.paymentId}</p>
-              <p className="text-sm text-green-700">Status: Aprovado</p>
+              <p className="text-sm text-green-700">Status: {paymentData.status}</p>
             </div>
           )}
 
           <div className="space-y-3">
             <Link href="/dashboard" className="btn-primary w-full inline-block">
-              <Calendar className="w-5 h-5 inline mr-2" />
+              <CreditCard className="w-5 h-5 inline mr-2" />
               Ver Minhas Reservas
             </Link>
             
@@ -60,5 +60,20 @@ export default function ReservaSucessoPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function ReservaSucessoPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Carregando...</p>
+        </div>
+      </div>
+    }>
+      <ReservaSucessoContent />
+    </Suspense>
   )
 }

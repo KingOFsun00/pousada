@@ -28,9 +28,11 @@ export const metadata: Metadata = {
     title: 'Pousada Bistrô Savacipo - Experiência Premium na Serra do Cipó',
     description: 'Descubra nosso refúgio de tranquilidade com hospedagem premium e gastronomia requintada',
     type: 'website',
-    url: 'https://pousadabistrosavacipo.com.br',
+    url: process.env.NODE_ENV === 'production' 
+      ? 'https://seu-usuario.github.io/pousada'
+      : 'https://pousadabistrosavacipo.com.br',
   },
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({

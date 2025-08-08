@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { Clock, Calendar, Home } from 'lucide-react'
+import { Clock, RefreshCw, Home } from 'lucide-react'
 
-export default function ReservaPendentePage() {
+function ReservaPendenteContent() {
   const searchParams = useSearchParams()
   const [paymentData, setPaymentData] = useState<any>(null)
 
@@ -31,25 +31,25 @@ export default function ReservaPendentePage() {
           </div>
           
           <h1 className="font-playfair text-3xl font-bold text-yellow-800 mb-4">
-            Pagamento Pendente
+            Pagamento em Processamento
           </h1>
           
           <p className="text-gray-600 mb-6">
-            Seu pagamento está sendo processado. Você receberá uma confirmação por e-mail assim que for aprovado.
+            Seu pagamento está sendo processado. Você receberá uma confirmação assim que for aprovado.
           </p>
 
           {paymentData && (
             <div className="bg-yellow-50 rounded-lg p-4 mb-6 text-left">
               <h3 className="font-semibold text-yellow-800 mb-2">Detalhes do Pagamento:</h3>
               <p className="text-sm text-yellow-700">ID: {paymentData.paymentId}</p>
-              <p className="text-sm text-yellow-700">Status: Pendente</p>
+              <p className="text-sm text-yellow-700">Status: {paymentData.status}</p>
             </div>
           )}
 
           <div className="space-y-3">
-            <Link href="/dashboard" className="btn-primary w-full inline-block">
-              <Calendar className="w-5 h-5 inline mr-2" />
-              Acompanhar Status
+            <Link href="/reserva" className="btn-primary w-full inline-block">
+              <RefreshCw className="w-5 h-5 inline mr-2" />
+              Verificar Status
             </Link>
             
             <Link href="/" className="btn-secondary w-full inline-block">
@@ -60,5 +60,20 @@ export default function ReservaPendentePage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function ReservaPendentePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-yellow-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Carregando...</p>
+        </div>
+      </div>
+    }>
+      <ReservaPendenteContent />
+    </Suspense>
   )
 }

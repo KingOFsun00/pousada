@@ -1,0 +1,12 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/quartos/page": "app/quartos/page.js",
+  "/reserva/erro/page": "app/reserva/erro/page.js",
+  "/reserva/pendente/page": "app/reserva/pendente/page.js",
+  "/reserva/page": "app/reserva/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/reserva/sucesso/page": "app/reserva/sucesso/page.js",
+  "/contato/page": "app/contato/page.js"
+}

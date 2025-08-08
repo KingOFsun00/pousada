@@ -1,0 +1,12 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/login/page": "/login",
+  "/page": "/",
+  "/quartos/page": "/quartos",
+  "/reserva/erro/page": "/reserva/erro",
+  "/reserva/pendente/page": "/reserva/pendente",
+  "/reserva/page": "/reserva",
+  "/dashboard/page": "/dashboard",
+  "/reserva/sucesso/page": "/reserva/sucesso",
+  "/contato/page": "/contato"
+}

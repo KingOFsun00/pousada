@@ -1,0 +1,118 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "/pousada",
+  "redirects": [
+    {
+      "source": "/pousada",
+      "destination": "/pousada/",
+      "basePath": false,
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^/pousada$"
+    },
+    {
+      "source": "/:file((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/]+\\.\\w+)/",
+      "destination": "/:file",
+      "internal": true,
+      "missing": [
+        {
+          "type": "header",
+          "key": "x-nextjs-data"
+        }
+      ],
+      "statusCode": 308,
+      "regex": "^(?:/((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/]+\\.\\w+))/$"
+    },
+    {
+      "source": "/:notfile((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/\\.]+)",
+      "destination": "/:notfile/",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/\\.]+))$"
+    }
+  ],
+  "headers": [],
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/contato",
+      "regex": "^/contato(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contato(?:/)?$"
+    },
+    {
+      "page": "/dashboard",
+      "regex": "^/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/quartos",
+      "regex": "^/quartos(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quartos(?:/)?$"
+    },
+    {
+      "page": "/reserva",
+      "regex": "^/reserva(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reserva(?:/)?$"
+    },
+    {
+      "page": "/reserva/erro",
+      "regex": "^/reserva/erro(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reserva/erro(?:/)?$"
+    },
+    {
+      "page": "/reserva/pendente",
+      "regex": "^/reserva/pendente(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reserva/pendente(?:/)?$"
+    },
+    {
+      "page": "/reserva/sucesso",
+      "regex": "^/reserva/sucesso(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reserva/sucesso(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "Next-Router-Segment-Prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  },
+  "rewrites": []
+}

@@ -1,4 +1,4 @@
-export const basePath = process.env.NODE_ENV === 'production' ? '/pousada-savacipo' : ''
+export const basePath = process.env.NODE_ENV === 'production' ? '/pousada' : ''
 
 export function getImagePath(imagePath: string): string {
   if (imagePath.startsWith('http') || imagePath.startsWith('//')) {

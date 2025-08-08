@@ -1,12 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Mail, Lock, Eye, EyeOff, User, AlertCircle } from 'lucide-react'
 import { useAuth } from '@/lib/simple-auth'
 
-export default function LoginPage() {
+function LoginContent() {
   const [isLogin, setIsLogin] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -38,71 +38,44 @@ export default function LoginPage() {
     try {
       if (isLogin) {
         const success = await login(formData.email, formData.password)
-        
         if (success) {
           router.push(callbackUrl)
         } else {
           setError('E-mail ou senha incorretos')
         }
       } else {
-        // Lógica de registro
+        // Lógica de registro (simplificada)
         if (formData.password !== formData.confirmPassword) {
-          setError('Senhas não coincidem')
+          setError('As senhas não coincidem')
           return
         }
-        
-        if (formData.password.length < 6) {
-          setError('Senha deve ter pelo menos 6 caracteres')
-          return
-        }
-        
-        // Simular registro bem-sucedido
-        setError('')
-        alert('Registro realizado com sucesso! Faça login.')
-        setIsLogin(true)
-        setFormData({ ...formData, password: '', confirmPassword: '' })
+        // Aqui você implementaria o registro
+        setError('Registro não implementado ainda')
       }
-    } catch (error) {
-      console.error('Erro:', error)
-      setError('Erro interno. Tente novamente.')
+    } catch (err) {
+      setError('Ocorreu um erro. Tente novamente.')
     } finally {
       setLoading(false)
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }))
-    setError('')
-  }
-
-  // Se já estiver logado, não mostrar a página
-  if (user) {
-    return null
-  }
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-amber-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div className="text-center">
-          <Link href="/" className="font-playfair text-2xl font-bold text-amber-800">
-            Pousada Bistrô Savacipo
-          </Link>
-          <h2 className="mt-6 text-3xl font-bold text-gray-900">
-            {isLogin ? 'Entre na sua conta' : 'Crie sua conta'}
-          </h2>
-          <p className="mt-2 text-sm text-gray-600">
-            {isLogin ? 'Acesse sua área pessoal' : 'Cadastre-se para fazer reservas'}
-          </p>
-        </div>
-
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center py-12 px-4">
+      <div className="max-w-md w-full">
         <div className="card p-8">
+          <div className="text-center mb-8">
+            <h1 className="font-playfair text-3xl font-bold text-amber-800 mb-2">
+              {isLogin ? 'Entrar' : 'Criar Conta'}
+            </h1>
+            <p className="text-gray-600">
+              {isLogin ? 'Acesse sua conta' : 'Crie sua conta para fazer reservas'}
+            </p>
+          </div>
+
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-2 text-red-700">
-              <AlertCircle size={16} />
-              <span className="text-sm">{error}</span>
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-center">
+              <AlertCircle className="w-5 h-5 text-red-600 mr-2" />
+              <span className="text-red-700">{error}</span>
             </div>
           )}
 
@@ -110,61 +83,62 @@ export default function LoginPage() {
             {!isLogin && (
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  <User className="w-4 h-4 inline mr-2" />
                   Nome Completo
                 </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required={!isLogin}
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                  placeholder="Seu nome completo"
-                />
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="text"
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    placeholder="Seu nome completo"
+                    required={!isLogin}
+                  />
+                </div>
               </div>
             )}
 
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                <Mail className="w-4 h-4 inline mr-2" />
                 E-mail
               </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                placeholder="seu@email.com"
-              />
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  type="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  placeholder="seu@email.com"
+                  required
+                />
+              </div>
             </div>
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                <Lock className="w-4 h-4 inline mr-2" />
                 Senha
               </label>
               <div className="relative">
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
-                  id="password"
-                  name="password"
                   type={showPassword ? 'text' : 'password'}
-                  required
+                  id="password"
                   value={formData.password}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                  placeholder="Sua senha"
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  placeholder="••••••••"
+                  required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
             </div>
@@ -172,56 +146,64 @@ export default function LoginPage() {
             {!isLogin && (
               <div>
                 <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
-                  <Lock className="w-4 h-4 inline mr-2" />
                   Confirmar Senha
                 </label>
-                <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  required={!isLogin}
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-                  placeholder="Confirme sua senha"
-                />
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    id="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    placeholder="••••••••"
+                    required={!isLogin}
+                  />
+                </div>
               </div>
             )}
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full btn-primary py-3 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Processando...' : (isLogin ? 'Entrar' : 'Cadastrar')}
+              {loading ? 'Carregando...' : (isLogin ? 'Entrar' : 'Criar Conta')}
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <button
-              type="button"
-              onClick={() => {
-                setIsLogin(!isLogin)
-                setError('')
-                setFormData({ name: '', email: '', password: '', confirmPassword: '' })
-              }}
-              className="text-amber-600 hover:text-amber-500 font-medium"
+              onClick={() => setIsLogin(!isLogin)}
+              className="text-amber-600 hover:text-amber-700 font-medium"
             >
-              {isLogin ? 'Não tem conta? Cadastre-se' : 'Já tem conta? Faça login'}
+              {isLogin ? 'Não tem uma conta? Criar conta' : 'Já tem uma conta? Entrar'}
             </button>
           </div>
 
-          {isLogin && (
-            <div className="mt-4 text-center">
-              <p className="text-sm text-gray-600">
-                <strong>Para testar:</strong><br />
-                E-mail: cliente@email.com<br />
-                Senha: 123456
-              </p>
-            </div>
-          )}
+          <div className="mt-6 text-center">
+            <Link href="/" className="text-gray-600 hover:text-gray-700">
+              ← Voltar ao início
+            </Link>
+          </div>
         </div>
       </div>
     </div>
   )
 }
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Carregando...</p>
+        </div>
+      </div>
+    }>
+      <LoginContent />
+    </Suspense>
+  )
+}
+

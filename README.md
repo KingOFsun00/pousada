@@ -1,68 +1,85 @@
-# 🏨 Pousada Bistrô Savacipo
+# Pousada Bistrô Savacipo
 
-Site oficial da **Pousada Bistrô Savacipo**, localizada na Serra do Cipó, MG.
+Um refúgio de tranquilidade na Serra do Cipó com hospedagem premium e gastronomia requintada.
 
-## 🌐 Site Online
+## 🚀 Deploy no GitHub Pages
 
-**Acesse:** [https://seu-usuario.github.io/pousada](https://seu-usuario.github.io/pousada)
+Este projeto está configurado para ser deployado automaticamente no GitHub Pages.
 
-## 📱 Funcionalidades
-
-- ✅ Design responsivo e moderno
-- ✅ Navegação suave entre seções
-- ✅ Galeria de quartos e acomodações
-- ✅ Informações de contato e localização
-- ✅ Botão direto para WhatsApp
-- ✅ Mapa integrado do Google Maps
-- ✅ SEO otimizado
-
-## 🚀 Como usar no GitHub Pages
+### Configuração Inicial
 
 1. **Fork ou clone este repositório**
-2. **Vá em Settings > Pages no seu repositório**
-3. **Selecione "Deploy from a branch"**
-4. **Escolha branch `main` e pasta `/ (root)`**
-5. **Aguarde alguns minutos**
-6. **Acesse seu site em:** `https://seu-usuario.github.io/nome-do-repositorio`
+2. **Atualize a URL no `_config.yml`**:
+   ```yaml
+   url: "https://SEU-USUARIO.github.io"
+   baseurl: "/pousada"
+   ```
+   Substitua `SEU-USUARIO` pelo seu nome de usuário do GitHub.
 
-## 🎨 Personalização
+3. **Ative o GitHub Pages**:
+   - Vá para Settings > Pages
+   - Source: "GitHub Actions"
 
-### Alterar informações de contato
-Edite o arquivo `index.html` e procure por:
-- Telefone: `(31) 98888-0727`
-- E-mail: `contato@pousadasavacipo.com.br`
-- WhatsApp: `https://wa.me/5531988880727`
+### Deploy Automático
 
-### Alterar imagens
-As imagens estão usando Unsplash como exemplo. Substitua as URLs pelas suas próprias imagens:
-\`\`\`html
-<img src="SUA_IMAGEM_AQUI.jpg" alt="Descrição">
-\`\`\`
+O projeto usa GitHub Actions para deploy automático. A cada push para a branch `main`, o site será automaticamente buildado e deployado.
 
-### Alterar cores
-Modifique as variáveis CSS no início do arquivo:
-\`\`\`css
-:root {
-    --primary-color: #5d4037;
-    --secondary-color: #8d6e63;
-    --accent-color: #d7ccc8;
-}
-\`\`\`
+### Deploy Manual
 
-## 📞 Contato
+Para fazer deploy manual:
 
-- **Telefone:** (31) 98888-0727
-- **Email:** contato@pousadasavacipo.com.br
-- **Endereço:** Serra do Cipó, Jaboticatubas - MG
-- **Instagram:** [@bistro_pousada_savacipo](https://www.instagram.com/bistro_pousada_savacipo/)
+```bash
+# Instalar dependências
+npm install
 
-## 📄 Licença
+# Build para GitHub Pages
+npm run build:gh-pages
 
-Este projeto é propriedade da Pousada Bistrô Savacipo. Todos os direitos reservados.
+# Os arquivos estarão na pasta `out/`
+```
 
----
+### Scripts Disponíveis
 
-**Desenvolvido com ❤️ para a Pousada Bistrô Savacipo**
-\`\`\`
+- `npm run dev` - Desenvolvimento local
+- `npm run build` - Build para produção
+- `npm run build:gh-pages` - Build otimizado para GitHub Pages
+- `npm run deploy` - Deploy para GitHub Pages
 
-Agora vamos criar um arquivo de configuração simples para o GitHub Pages:
+### Estrutura do Projeto
+
+```
+pousada/
+├── app/                    # Páginas Next.js
+├── components/             # Componentes React
+├── public/                # Arquivos estáticos
+├── styles/                # Estilos CSS
+├── .github/workflows/     # GitHub Actions
+└── scripts/               # Scripts de build
+```
+
+### Tecnologias
+
+- **Next.js 15** - Framework React
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS** - Estilização
+- **Radix UI** - Componentes acessíveis
+- **NextAuth.js** - Autenticação
+
+### Configurações Especiais
+
+- **Static Export**: Configurado para exportação estática
+- **Base Path**: Configurado para `/pousada`
+- **Trailing Slash**: Habilitado para compatibilidade
+- **Images**: Configuradas como unoptimized para static export
+
+### Troubleshooting
+
+1. **Erro 404**: Verifique se o `basePath` está correto no `next.config.mjs`
+2. **Imagens não carregam**: Verifique se estão na pasta `public/`
+3. **Build falha**: Execute `npm run build:gh-pages` localmente para debug
+
+### Links Úteis
+
+- [GitHub Pages](https://pages.github.com/)
+- [Next.js Static Export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)
+- [GitHub Actions](https://docs.github.com/en/actions)
