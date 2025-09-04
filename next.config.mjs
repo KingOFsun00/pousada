@@ -2,10 +2,11 @@
 const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-  images: { unoptimized: true },
-  output: 'export',
-  trailingSlash: true,
-  assetPrefix: '.', // ← Esta é a linha importante!
+  images: { unoptimized: false },
+  // REMOVA output: 'export' e related configs
+  experimental: {
+    serverComponentsExternalPackages: ['nodemailer']
+  }
 }
 
 export default nextConfig
