@@ -1,12 +1,12 @@
 {
   "/_not-found/page": "/_not-found",
+  "/contato/page": "/contato",
+  "/dashboard/page": "/dashboard",
   "/login/page": "/login",
-  "/page": "/",
-  "/quartos/page": "/quartos",
+  "/reserva/page": "/reserva",
   "/reserva/erro/page": "/reserva/erro",
   "/reserva/pendente/page": "/reserva/pendente",
-  "/reserva/page": "/reserva",
-  "/dashboard/page": "/dashboard",
   "/reserva/sucesso/page": "/reserva/sucesso",
-  "/contato/page": "/contato"
+  "/page": "/",
+  "/quartos/page": "/quartos"
 }
